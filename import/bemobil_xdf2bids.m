@@ -585,7 +585,7 @@ for Si = 1:numel(inStreams)
         [eventsInStream.type]       = deal(inStreams{Si}.info.type);
         times                       = num2cell(inStreams{Si}.time_stamps);
         [eventsInStream.timestamp]  = times{:};
-        samples                     = num2cell(cellfun(@(x) find(dataTimes >= x, 1,'first'), times));
+        samples                     = cellfun(@(x) find(dataTimes >= x, 1,'first'), times, 'UniformOutput', false);
         [eventsInStream.sample]     = samples{:};
         [eventsInStream.offset]     = deal([]);
         [eventsInStream.duration]   = deal([]);
